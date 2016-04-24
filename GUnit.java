@@ -56,7 +56,7 @@ public class GUnit {
                 int totalTests1 = e1.getValue().size();
                 int totalTests2 = e2.getValue().size();
                 if (totalTests1 == totalTests2) {
-                    e1.getKey().compareTo(e2.getKey());
+                    return e1.getKey().compareTo(e2.getKey());
                 }
                 return Integer.compare(totalTests2, totalTests1);
             }).forEach(method -> {
