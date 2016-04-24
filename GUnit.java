@@ -4,15 +4,17 @@ public class GUnit {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String s = scanner.nextLine();
+        String patternLine = "[A-Z][A-Za-z0-9]+\\s\\|\\s[A-Z][A-Za-z0-9]+\\s\\|\\s[A-Z][A-Za-z0-9]+";
         HashMap<String, HashMap<String, LinkedList<String>>> data = new HashMap<>();
         while (!s.equals("It's testing time!")) {
+            if (!s.matches(patternLine)) {
+                s = scanner.nextLine();
+                continue;
+            }
             String[] input = s.split("\\s\\|\\s");
             String className = input[0];
             String methodName = input[1];
             String unitTestName = input[2];
-            if (!className.matches(pattern) || !methodName.matches(pattern) || !unitTestName.matches(pattern)) {
-                continue;
-            }
             if (!data.containsKey(className)) {
                 data.put(className, new HashMap<>());
                 data.get(className).put(methodName, new LinkedList<>());
@@ -20,7 +22,7 @@ public class GUnit {
             } else if (!data.get(className).containsKey(methodName)) {
                 data.get(className).put(methodName, new LinkedList<>());
                 data.get(className).get(methodName).add(unitTestName);
-            } else if (!data.get(className).get(methodName).contains(unitTestName)){
+            } else if (!data.get(className).get(methodName).contains(unitTestName)) {
                 data.get(className).get(methodName).add(unitTestName);
             }
             s = scanner.nextLine();
