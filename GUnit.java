@@ -4,7 +4,6 @@ public class GUnit {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String s = scanner.nextLine();
-        String pattern = "[A-Z]+[A-Za-z0-9]+";
         HashMap<String, HashMap<String, LinkedList<String>>> data = new HashMap<>();
         while (!s.equals("It's testing time!")) {
             String[] input = s.split("\\s\\|\\s");
